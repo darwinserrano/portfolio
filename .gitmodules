@@ -1,0 +1,6 @@
+[submodule "seeder"]
+	path = seeder
+	url = https://github.com/darwinserrano/seeder.git
+[submodule "front-map"]
+	path = front-map
+	url = https://github.com/darwinserrano/front-map.git
