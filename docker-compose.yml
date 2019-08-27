@@ -1,0 +1,31 @@
+version: '3'
+services:
+  seeder:
+    build: ./seeder
+    ports:
+      - 5000:5000
+    volumes:
+      - ./seeder:/app
+      - /app/node_modules
+    links:
+      - postgres_db
+    depends_on:
+      - postgres_db
+
+  front:
+    build: ./front-map
+    ports:
+      - 3000:3000
+    volumes:
+      - ./front-map:/app
+      - /app/node_modules
+    links:
+      - seeder
+
+  postgres_db:
+    image: mdillon/postgis
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
